@@ -1,0 +1,12 @@
+name: eigenstrapping_analysis
+channels:
+    - defaults
+    - conda-forge
+dependencies:
+    - python=3.10
+    - pip
+    - pip:
+        - brainspace
+        - "git+https://github.com/SNG-Newy/eigenstrapping"
+        - neurosynth
+        - pysurfer
