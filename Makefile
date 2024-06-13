@@ -17,7 +17,7 @@ help:
 		@echo "  all                 to run *all the things*"
 
 cortical:
-		@echo "Fetching required data\n"
+		@echo "Fetching and preprocessing required data\n"
 		${PYTHON} scripts/cortical/fetch_data.py
 		@echo "Generating eigenstrapping surrogates for HCP data\n"
 		${PYTHON} scripts/cortical/generate_hcp_surrogates.py
