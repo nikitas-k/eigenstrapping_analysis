@@ -41,7 +41,7 @@ Make sure you've installed (and correctly sourced) the dependencies above.
 
 If you find yourself in the position to use a Docker image, try running our image that contains the packages that we used to run our analyses, and run it all there. The image should take care of all the dependencies for you, and run it in the same operating environment that we performed our analyses in. You can find more info `here <./container/README.rst>`_.
 
-NOTE: Running ``make all`` will take a couple of days on a HPC, probably a week or two on a laptop (could be more; untested). All you should have to do is sit back and it'll take care of everything - famous last words.
+NOTE: Running ``make all`` will take a couple of days on a HPC, probably a week or two on a laptop (could be more; untested). All you should have to do is sit back and it'll take care of everything - famous last words. Be aware that there is quite a large file requirement as well (>100GB); be sure you have the space to run this.
 
 Re-running specific analyses
 ============================
