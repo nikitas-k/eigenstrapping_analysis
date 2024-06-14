@@ -39,11 +39,12 @@ RUN export ND_ENTRYPOINT="/neurodocker/startup.sh" \
     &&   echo 'export USER="${USER:=`whoami`}"' >> "$ND_ENTRYPOINT" \
     &&   echo 'if [ -n "$1" ]; then "$@"; else /usr/bin/env bash; fi' >> "$ND_ENTRYPOINT"; \
     fi \
-    && chmod -R 777 /neurodocker && chmod a+s /neurodocker
+    && chmod -R 777 /neurodocker && chmod a+s /neurodocker 
+    
 
 ENTRYPOINT ["/neurodocker/startup.sh"]
 
-WORKDIR /vagrant
+WORKDIR .
 
 RUN apt-get update -qq \
     && apt-get install -y -q --no-install-recommends \
@@ -151,3 +152,17 @@ RUN echo '{ \
     \n    ] \
     \n  ] \
     \n}' > /neurodocker/neurodocker_specs.json
+
+RUN echo    '=========================================================================' \
+    && echo '||                                                                     ||' \
+    && echo '|| Eigenstrapping analysis code. Copyright (C) 2024  Nikitas Koussis & ||' \
+    && echo '||           Systems Neuroscience Group (SNG) Newcastle.               ||' \
+    && echo '||                                                                     ||' \
+    && echo '||  This program comes with ABSOLUTELY NO WARRANTY and is not fit for  ||' \
+    && echo '||  for clinical, diagnostic or medical usage of any sort, and may not ||' \
+    && echo '||                        be commercialized.                           ||' \
+    && echo '||    This is free software, and you are welcome to redistribute it    ||' \
+    && echo '||        under the GNU License v3.0 with attribution, and in its      ||' \
+    && echo '||                         unmodified form.                            ||' \
+    && echo '||                                                                     ||' \
+    && echo '========================================================================='
