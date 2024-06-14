@@ -52,6 +52,20 @@ def fetch_data(*, name=None, space=None, den=None, res=None, hemi=None,
                          'annotations set any of the parameters to "all".')
 
     # get info on datasets we need to fetch
+    if name == 'HCP_structural':
+        data_dir = Path('datasets', 'cortical', 'HCP_structural', parents=True, exist_ok=True).resolve()
+        datasets.fetch_annotation(desc='myelinmap', return_single=True, data_dir=data_dir)
+        datasets.fetch_annotation(desc='thickness', return_single=True, data_dir=data_dir)
+    elif name == 'abagen_PC1':
+        data_dir = Path('datasets', 'cortical', 'abagen_PC1', parents=True, exist_ok=True).resolve()
+        datasets.fetch_annotation(desc='abagen', return_single=True, data_dir=data_dir)
+    elif name == 'margulies2016_gradient01':
+        data_dir = Path('datasets', 'cortical', 'margulies2016_gradient01', parents=True, exist_ok=True).resolve()
+        datasets.fetch_annotation(desc='fcgradient01', return_single=True, data_dir=data_dir)
+    elif name == 'neurosynth':
+        data_dir = Path('datasets', 'cortical', 'neurosynth', parents=True, exist_ok=True).resolve()
+        datasets.fetch_annotation(source='neurosynth', return_single=True, data_dir=data_dir)
+
     data_dir = utils.get_data_dir(data_dir=data_dir)
     info = utils._match_files(get_dataset_info(name),
                         space=space, den=den, res=res,

@@ -26,7 +26,7 @@ cortical:
 		@echo "Generating all surrogates for Allen Human Brain Atlas and other maps\n"
 		${PYTHON} scripts/cortical/generate_brainmap_surrogates.py
 		@echo "Running code to analyze source-target correlations use-case\n"
-		${PYTHON} scripts/cortical/run_all_correlations.py
+		${PYTHON} scripts/cortical/run_all_nulls.py
 
 subcortical:
 		@echo "Fetching required data\n"

@@ -25,7 +25,7 @@ fetch_data(name='HCP_structural', data_dir=OUTDIR)
 # fetch others
 fetch_data(name='neurosynth', data_dir=OUTDIR)
 fetch_data(name='abagen_PC1', data_dir=OUTDIR)
-fetch_data(name='margulies2016_PC1', data_dir=OUTDIR)
+fetch_data(name='margulies2016_gradient01', data_dir=OUTDIR)
 fetch_data(name='distmat', data_dir=OUTDIR)
 
 # fetch fsaverage and fslr masks for medial wall masking (as neuromaps does not do this by default)

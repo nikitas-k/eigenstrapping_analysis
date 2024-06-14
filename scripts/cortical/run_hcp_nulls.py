@@ -3,7 +3,9 @@ from pathlib import Path
 import numpy as np
 
 from eigenstrapping.fit import SampledSurrogateMaps
-from eigenstrapping_analysis.utils import get_rootdir, MSEED
+from eigenstrapping_analysis.utils import (
+    get_rootdir, MSEED, join, save_npy, load_npy
+)
 
 from eigenstrapping.stats import compare_maps
 
@@ -16,11 +18,11 @@ nsurrs = 1000
 seed = MSEED
 
 # necessary files
-D = op.join(DATADIR, 'distmat', 'distmat_32k.npy')
-index = op.join(DATADIR, 'distmat', 'index_32k.npy')
-hcp_data = np.load(op.join(DATADIR, 'HCP_functional', 'space-fsLR_den-32k_hemi-lh_S255-ALLTASKS.npy'))
-rand_nulls = np.load(op.join(OUTDIR, 'hcp_random_nulls.npy'))
-eigen_nulls = np.load(op.join(OUTDIR, 'hcp_eigen_nulls.npy'))
+D = join(DATADIR, 'distmat', 'distmat_32k.npy')
+index = join(DATADIR, 'distmat', 'index_32k.npy')
+hcp_data = load_npy(join(DATADIR, 'HCP_functional', 'space-fsLR_den-32k_hemi-lh_S255-ALLTASKS.npy'))
+rand_nulls = load_npy(join(OUTDIR, 'hcp_random_nulls.npy'))
+eigen_nulls = load_npy(join(OUTDIR, 'hcp_eigen_nulls.npy'))
 
 # first and second subjects in EMOTION_FACES_SHAPES
 hcp_data_source = hcp_data[0][0]
@@ -67,11 +69,12 @@ u0 = u0_samples.mean(axis=0)
 emp_var = emp_var_samples.mean(axis=0)
 
 # save for later
-np.save(op.join(OUTDIR, 'hcp_source_target_corr.npy'), corr)
-np.save(op.join(OUTDIR, 'hcp_random_corrs.npy'), rand_corrs)
-np.save(op.join(OUTDIR, 'hcp_eigen_corrs.npy'), eigen_corrs)
-np.save(op.join(OUTDIR, 'hcp_u0.npy'), u0)
-np.save(op.join(OUTDIR, 'hcp_emp_var.npy'), emp_var)
-np.save(op.join(OUTDIR, 'hcp_rand_nulls_var.npy'), surr_rand)
-np.save(op.join(OUTDIR, 'hcp_eigen_nulls_var.npy'), surr_eigen)
+save_npy(join(OUTDIR, 'hcp_source_target_corr.npy'), corr)
+save_npy(join(OUTDIR, 'hcp_random_corrs.npy'), rand_corrs)
+save_npy(join(OUTDIR, 'hcp_eigen_corrs.npy'), eigen_corrs)
+save_npy(join(OUTDIR, 'hcp_u0.npy'), u0)
+save_npy(join(OUTDIR, 'hcp_emp_var.npy'), emp_var)
+save_npy(join(OUTDIR, 'hcp_rand_nulls_var.npy'), surr_rand)
+save_npy(join(OUTDIR, 'hcp_eigen_nulls_var.npy'), surr_eigen)
+
 print('saved HCP analysis files to {}\n'.format(OUTDIR))
